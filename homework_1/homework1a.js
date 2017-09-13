@@ -19,9 +19,9 @@
 
 var numPoints = 3;
 var vertices = new Float32Array([
-  0.0, 0.0,
-  1.0, 0.0,
-  0.5, 1.0
+  -0.5, 0.0,
+  0.5, 0.0,
+  0.0, 1.0
 ]);
 
 
@@ -154,15 +154,25 @@ function main() {
   //shift of x coordinate
   var shift_amount = 0.0;
   var y_shift_amount = 0.0;
-  //var increment = 0.03;
   //default the scale value to 1
   var scale = 1;
+//  var step = 2*Math.PI/20;
+	var step=0.0174533;
+	var theta=0;
 
   // define an animation loop
   var animate = function() {
-	draw(shift_amount,y_shift_amount,scale);
+	draw(shift_amount, y_shift_amount, scale);
 	//shift_amount = shift_amount + increment;
-	//if (shift_amount > 0.2 || shift_amount < -0.2) increment = -increment;
+	shift_amount = 0.8*Math.cos(theta+=step);
+	y_shift_amount = 0.8*Math.sin(theta+=step);
+/*
+	for(var theta=0;theta<2*Math.PI;theta+=step){
+		shift_amount = 0.8*Math.cos(theta);
+		y_shift_amount = (0-0.8)*Math.sin(theta);
+	}
+*/
+	
 	
   scale = parseFloat(document.getElementById("scaleBox").value);
 	
