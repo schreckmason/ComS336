@@ -95,7 +95,14 @@ void main()
   float diffuseFactor = max(0.0, dot(L, N));
 
   // specular factor from Phong reflection model
-  float specularFactor = pow(max(0.0, dot(V, R)), shininess);
+  //float specularFactor = pow(max(0.0, dot(V, R)), shininess);
+  
+  //Add L+V according to the pdf
+  vec3 l_v_sum = L + V;
+  vec3 H = normalize(l_v_sum);
+  
+  //I checked multiplying shininess by four and passing that from the javascript file 
+  float specularFactor = pow(max(0.0, dot(N, H)),shininess);
 
   // add the components together
   gl_FragColor = specularColor * specularFactor + diffuseColor * diffuseFactor + ambientColor;

@@ -170,6 +170,7 @@ var matPropElements = new Float32Array([
 0.25, 0.20, 0.15 // weak specular highlight similar to diffuse color
 ]);
 var shininess = 10.0;
+//var shininess = 40.0;//TODO: flagged this to note the testing, if this is uncommented for the Blinn-Phong model the lighting will look the same as R dot V
 
 // the OpenGL context
 var gl;
@@ -321,6 +322,7 @@ function draw()
   
   loc = gl.getUniformLocation(lightingShader, "lightPosition");
   gl.uniform4f(loc, 2.0, 4.0, 2.0, 1.0);
+  //gl.uniform4f(loc, 0,0,0,1.0);
 
   // light and material properties
   loc = gl.getUniformLocation(lightingShader, "lightProperties");
