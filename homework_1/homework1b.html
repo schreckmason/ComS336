@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Varying Variables</title>
+</head>
+
+<body> 
+
+
+<script id="vertexShader" type="x-shader/x-vertex">
+attribute vec4 a_Position;
+attribute vec4 a_Color;
+varying vec4 color;
+void main() 
+{
+  color = a_Color;
+  gl_Position = a_Position;
+}
+</script>
+
+<script id="fragmentShader" type="x-shader/x-fragment">
+// In a webgl fragment shader, float precision has to be specified before
+// any other variable declarations (in this case, "medium" precision)
+precision mediump float;
+varying vec4 color;
+void main() 
+{
+  gl_FragColor = color;
+    //if(gl_FragCoord.y>60.0){discard;}
+  if(gl_FragCoord.y>60.0 && gl_FragCoord.y<70.0){
+    discard;
+  }else if(gl_FragCoord.y>80.0 && gl_FragCoord.y<90.0){
+    discard;
+  }else if(gl_FragCoord.y>100.0 && gl_FragCoord.y<110.0){
+    discard;
+  }else if(gl_FragCoord.y>120.0 && gl_FragCoord.y<130.0){
+	discard;    
+  }else if(gl_FragCoord.y>140.0 && gl_FragCoord.y<150.0){
+	discard;
+  }else if(gl_FragCoord.y>160.0 && gl_FragCoord.y<170.0){
+	discard;
+  }else if(gl_FragCoord.y>180.0 && gl_FragCoord.y<190.0){
+	discard;
+  }else if(gl_FragCoord.y>200.0 && gl_FragCoord.y<210.0){
+	discard;
+  }else if(gl_FragCoord.y>220.0 && gl_FragCoord.y<230.0){
+	discard;
+  }else if(gl_FragCoord.y>240.0 && gl_FragCoord.y<250.0){
+	discard;
+  }else if(gl_FragCoord.y>260.0 && gl_FragCoord.y<270.0){
+	discard;
+  }else if(gl_FragCoord.y>280.0 && gl_FragCoord.y<290.0){
+	discard;
+  }else if(gl_FragCoord.y>300.0 && gl_FragCoord.y<310.0){
+	discard;
+  }else if(gl_FragCoord.y>320.0 && gl_FragCoord.y<330.0){
+	discard;
+  }else if(gl_FragCoord.y>350.0 && gl_FragCoord.y<370.0){
+	discard;
+  }
+}
+</script>
+
+	<canvas id="theCanvas" width="400" height="400">
+    Please use a browser that supports "canvas"
+    </canvas>
+
+		<script src="../teal_book/webgl-utils.js"></script>
+		<script src="../teal_book/webgl-debug.js"></script>
+		<script src="../teal_book/cuon-utils.js"></script>
+		<script src="GL_example2_varying_variables.js"></script>
+		<script>window.onload = main</script>
+</body>
+</html>
