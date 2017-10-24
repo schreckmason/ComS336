@@ -98,10 +98,22 @@ void main()
 
   // specular factor from Phong reflection model
   float specularFactor = pow(max(0.0, dot(V, R)), exponent);
-
-  // add the components together
-  gl_FragColor = specularColor * specularFactor + diffuseColor * diffuseFactor + ambient;
-  gl_FragColor.a = 1.0;
+  
+  vec4 computed_color_val = specularColor * specularFactor + diffuseColor*diffuseFactor + ambient;
+  float red_val = computed_color_val.r;
+  float green_val = computed_color_val.g;
+  float blue_val = computed_color_val.b;
+  
+  float average = (red_val + green_val + blue_val) / 3.0;
+  if(average<=0.25){
+    gl_FragColor = vec4(0.0,0.0,1.0,1.0);
+  }else if(average>0.25 && average<=0.5){
+    gl_FragColor = vec4(0.5,1.0,0.0,1.0);
+  }else if(average>0.5 && average<=0.75){
+    gl_FragColor = vec4(1.0,0.0,0,1.0);
+  }else{
+    gl_FragColor = specularColor * specularFactor + diffuseColor * diffuseFactor + ambient;
+  }
 }
 </script>
 
