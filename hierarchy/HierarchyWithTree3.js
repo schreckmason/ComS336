@@ -121,53 +121,35 @@ tower.setScale(2,15,2);
 towerDummy.addChild(tower);
 
 var genhousingDummy = new CS336Object();
-genhousingDummy.setPosition(2,15,2);
+genhousingDummy.setPosition(0,15,0);
 towerDummy.addChild(genhousingDummy);
 
 var genhousing = new CS336Object(drawCube);
-genhousing.setPosition(0,-5.5,0);
+genhousing.setPosition(0,-7,0);
 genhousing.setScale(3,2,3);
 genhousingDummy.addChild(genhousing);
 
-var rotorcapDummy = new CS336Object();
-rotorcapDummy.setPosition(2,15,2);
-genhousing.addChild(rotorcapDummy);
-// create the objects
-/*
-var torsoDummy = new CS336Object();
 
-var torso = new CS336Object(drawCube);
-torso.setScale(10, 10, 5);
-torsoDummy.addChild(torso);
+var rotorDummy = new CS336Object();
+rotorDummy.setPosition(0,-7,2.5);
+//towerDummy.addChild(rotorDummy);
+genhousingDummy.addChild(rotorDummy);
 
-var shoulderDummy = new CS336Object();
-shoulderDummy.setPosition(6.5, 4, 0);
-torsoDummy.addChild(shoulderDummy);
+var rotor = new CS336Object(drawCube);
+rotor.setPosition(0,0,0);
+rotor.setScale(1,1,3);
+rotorDummy.addChild(rotor);
 
-var shoulder = new CS336Object(drawCube);
-shoulder.setPosition(0, -2, 0);
-shoulder.setScale(3, 5, 2);
-shoulderDummy.addChild(shoulder);
+var f_rotorblade = new CS336Object(drawCube);
+//f_rotorblade.setPosition(-4.9,-7,3);
+f_rotorblade.setPosition(-4.9,0,1);
+f_rotorblade.setScale(9,2,1);
+rotorDummy.addChild(f_rotorblade);
 
-var armDummy = new CS336Object();
-armDummy.setPosition(0, -4.5, 1.0);
-shoulderDummy.addChild(armDummy);
-
-var arm = new CS336Object(drawCube);
-arm.setPosition(0, -2.5, -1.0);
-arm.setScale(3, 5, 2); 
-armDummy.addChild(arm);
-
-var hand = new CS336Object(drawCube);
-hand.setPosition(0, -6.5, -1.0);
-hand.setScale(1, 3, 3); 
-armDummy.addChild(hand);
-
-var head = new CS336Object(drawCube);
-head.setPosition(0, 7, 0);
-head.setScale(4, 4, 4); 
-torsoDummy.addChild(head);
-*/
+var s_rotorblade = new CS336Object(drawCube);
+s_rotorblade.setPosition(4.9,0,1);
+s_rotorblade.setScale(9,2,1);
+rotorDummy.addChild(s_rotorblade);
 
 // view matrix
 var view = new Matrix4().setLookAt(
@@ -196,43 +178,22 @@ function handleKeyPress(event)
 	var ch = getChar(event);
 	switch(ch)
 	{
-/*
 	case 't':
-		torsoDummy.setRotation(new Matrix4().setRotate(15, 0, 1, 0).multiply(torsoDummy.rotation));
-		break;
-	case 'T':
-    torsoDummy.setRotation(new Matrix4().setRotate(-15, 0, 1, 0).multiply(torsoDummy.rotation));
-		break;
-	case 's':
-	   shoulderDummy.setRotation(new Matrix4().setRotate(-15, 1, 0, 0).multiply(shoulderDummy.rotation));
-		break;
-	case 'S':
-    shoulderDummy.setRotation(new Matrix4().setRotate(15, 1, 0, 0).multiply(shoulderDummy.rotation));
-		break;
-	case 'a':
-    armDummy.setRotation(new Matrix4().setRotate(-15, 1, 0, 0).multiply(armDummy.rotation));
-		break;
-	case 'A':
-    armDummy.setRotation(new Matrix4().setRotate(15, 1, 0, 0).multiply(armDummy.rotation));
+		rotorDummy.setRotation(new Matrix4().setRotate(1,0,0,1).multiply(rotorDummy.rotation));
 		break;
 	case 'h':
-    hand.setRotation(new Matrix4().setRotate(15, 0, 1, 0).multiply(hand.rotation));
+		f_rotorblade.setRotation(new Matrix4().setRotate(15,1,0,0).multiply(f_rotorblade.rotation));
+		s_rotorblade.setRotation(new Matrix4().setRotate(-15,1,0,0).multiply(s_rotorblade.rotation));
 		break;
 	case 'H':
-	   hand.setRotation(new Matrix4().setRotate(-15, 0, 1, 0).multiply(hand.rotation));
+		f_rotorblade.setRotation(new Matrix4().setRotate(-15,1,0,0).multiply(f_rotorblade.rotation));
+		s_rotorblade.setRotation(new Matrix4().setRotate(15,1,0,0).multiply(s_rotorblade.rotation));
 		break;
 	case 'l':
-	   head.setRotation(new Matrix4().setRotate(15, 0, 1, 0).multiply(head.rotation));
+		genhousingDummy.setRotation(new Matrix4().setRotate(15,0,1,0).multiply(genhousingDummy.rotation));
 		break;
 	case 'L':
-    head.setRotation(new Matrix4().setRotate(-15, 0, 1, 0).multiply(head.rotation));
-		break;
-*/
-	case 'l':
-		genhousing.setRotation(new Matrix4().setRotate(15,0,1,0).multiply(genhousing.rotation));
-		break;
-	case 'L':
-		genhousing.setRotation(new Matrix4().setRotate(-15,0,1,0).multiply(genhousing.rotation));
+		genhousingDummy.setRotation(new Matrix4().setRotate(-15,0,1,0).multiply(genhousingDummy.rotation));
 		break;
 	default:
 			return;
@@ -361,6 +322,7 @@ function main() {
   // define an animation loop
   var animate = function() {
 	draw();
+	rotorDummy.setRotation(new Matrix4().setRotate(1,0,0,1).multiply(rotorDummy.rotation));
     requestAnimationFrame(animate, canvas); 
   };
   
