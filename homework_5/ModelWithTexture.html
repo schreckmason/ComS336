@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>Rotating Cube with Three.js app</title>
+	</head>
+	<body>
+	
+		<canvas id="theCanvas" width="600" height="400">
+    Please use a browser that supports "canvas"
+    </canvas>
+
+	<p>
+	Keyboard controls:
+	<ul style="list-style:none;">
+	<li>SPACE - pause rotation
+	<li>x - rotate about x axis
+	<li>y - rotate about y axis
+	<li>z - rotate about z axis
+<li><strong>Camera controls:</strong>
+		<li>w, a, s, d - move forward, left, back, right
+		<li>r, f - move up, down
+		<li>i, j, k, l - look up, left, down, right
+		<li>I, J, K, L - orbit down, right, up, left
+		<li>O - face origin
+		<li>p - put camera at origin
+		<li>W - decrease fov
+		<li>S - increase fov
+	</ul>
+	
+	<script src="http://threejs.org/build/three.min.js"></script>
+	<script src="http://threejs.org/examples/js/loaders/OBJLoader.js"></script>
+		
+		<script src="CameraControl.js"></script>
+		<script src="ModelWithTexture.js"></script>
+		<script>window.onload = start</script>
+	</body>
+</html>
