@@ -125,6 +125,14 @@ function startForReal(geometry)
   var person15 = new personHierarchy(scene,-6,null,115);
   var person16 = new personHierarchy(scene,6,null,115);
   var person16 = new personHierarchy(scene,0,null,115);
+  
+  var person17 = new personHierarchy(scene,0,null,120);
+  var person18 = new personHierarchy(scene,12, null, 120);
+  var person19 = new personHierarchy(scene,-12,null,120);
+  var person20 = new personHierarchy(scene,6,null,120);
+  var person21 = new personHierarchy(scene,-6,null,120);
+  var person22 = new personHierarchy(scene,18,null,120);
+  var person23 = new personHierarchy(scene,-18,null,120);
 
 
   var light = new THREE.PointLight(0xffffff, 1.0);
